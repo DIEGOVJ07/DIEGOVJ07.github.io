@@ -312,7 +312,6 @@ header nav a:not(.active):hover {
 
 .feature-card h3 { 
     font-size: 1.3rem;
-    /* --- NUEVO: Hacemos el texto del título más grueso --- */
     font-weight: 700; 
 }
 
@@ -328,7 +327,7 @@ header nav a:not(.active):hover {
     font-weight: 800;
 }
 
-/* --- ¡ASEGÚRATE DE QUE ESTA REGLA ESTÉ CORRECTA! --- */
+
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -342,10 +341,22 @@ header nav a:not(.active):hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     text-align: left;
 }
+.product-card1 {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
 
 /* 2. La parte superior (tendrá el fondo oscuro) */
 .card-top {
-    background-color: var(--dark-color); /* Fondo oscuro */
+    background-color: var(--marron-color); /* Fondo oscuro */
+    position: relative; /* Necesario para posicionar la etiqueta "Chocolate" */
+    text-align: center;
+    padding: 20px 20px 0 20px; /* Padding superior, sin padding inferior */
+}
+.card-top1{
+    background-color: var(--marron-color); /* Fondo oscuro */
     position: relative; /* Necesario para posicionar la etiqueta "Chocolate" */
     text-align: center;
     padding: 20px 20px 0 20px; /* Padding superior, sin padding inferior */
@@ -356,9 +367,12 @@ header nav a:not(.active):hover {
     width: 80%;
     position: relative;
     z-index: 2; /* Se asegura que la imagen esté por encima de la sección inferior */
-    
-    /* --- ¡LA MAGIA! --- */
-    /* Este margen negativo empuja la imagen hacia abajo, sobre la sección inferior */
+    margin-bottom: -60px; 
+}
+.card-top1 img {
+    width: 100%;
+    position: relative;
+    z-index: 2; /* Se asegura que la imagen esté por encima de la sección inferior */
     margin-bottom: -60px; 
 }
 
@@ -375,17 +389,37 @@ header nav a:not(.active):hover {
     font-weight: 700;
 }
 
+.product-card1 .tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
 /* 5. La parte inferior (tendrá el fondo claro) */
 .card-bottom {
+    background-color: var(--white-color); /* Fondo claro/tan */
+    padding: 80px 20px 20px 20px; 
+}
+.card-bottom1 {
     background-color: var(--secondary-color); /* Fondo claro/tan */
-    
-    /* --- ¡LA MAGIA! --- */
-    /* Este padding superior crea el espacio necesario para la imagen que se desborda */
     padding: 80px 20px 20px 20px; 
 }
 
 /* 6. El título del producto */
 .product-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+.product-card1 h3 {
     font-size: 1.1rem;
     font-weight: 700;
     line-height: 1.4;
@@ -399,6 +433,11 @@ header nav a:not(.active):hover {
     justify-content: space-between;
     align-items: center;
 }
+.card-footer1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 /* 8. El precio */
 .card-footer .price {
@@ -406,11 +445,27 @@ header nav a:not(.active):hover {
     font-weight: 700;
     color: var(--dark-color);
 }
+.card-footer1 .price1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
 
 /* 9. El botón "ADD TO CART" */
 .product-card .btn-primary {
-    background-color: var(--dark-color); /* Fondo oscuro sólido */
-    color: var(--white-color); /* Texto blanco */
+    background-color: var(--white-color); /* Fondo oscuro sólido */
+    color: var(--marron-color); /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.product-card1 .btn-primary1 {
+    background-color: var(--marron-color); /* Fondo oscuro sólido */
+    color: var(--secondary-color); /* Texto blanco */
     border: none; /* Sin borde */
     padding: 8px 15px;
     font-size: 0.8rem;
@@ -421,6 +476,10 @@ header nav a:not(.active):hover {
 }
 
 .product-card .btn-primary:hover {
+    background-color: #000; /* Un negro más intenso al pasar el ratón */
+}
+
+.product-card1 .btn-primary:hover {
     background-color: #000; /* Un negro más intenso al pasar el ratón */
 }
 
