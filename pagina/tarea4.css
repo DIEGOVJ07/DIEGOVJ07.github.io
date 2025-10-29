@@ -1,0 +1,509 @@
+/* ===== VARIABLES Y ESTILOS GLOBALES ===== */
+:root {
+    --primary-color: #A0522D; /* Marrón principal (Sienna) */
+    --secondary-color: #DCA56D; /* Beige (Tan) */
+    --texto-claro-color: #F9EDE7; /* Marrón claro (Light Brown) */
+    --marron-color: #361F19; /* Marrón oscuro para texto/fondos */
+    --background-color: #fdfaf6;
+    --text-color: #333;
+    --white-color: #fff;
+    --font-display: 'Anton', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== COMPONENTES REUTILIZABLES ===== */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #8B4513; /* SaddleBrown */
+}
+
+
+/* ===== CABECERA ===== */
+header {
+    /* --- LÍNEAS NUEVAS Y MODIFICADAS --- */
+    position: absolute; /* Saca al header del flujo normal */
+    width: 100%;      /* Asegura que ocupe todo el ancho */
+    top: 0;           /* Lo pega a la parte superior */
+    left: 0;          /* Lo pega a la izquierda */
+    z-index: 10;      /* Se asegura de que esté por encima de otros elementos */
+    padding: 20px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    /* --- CAMBIO DE COLOR --- */
+    color: var(--white-color); /* Cambiado para que sea visible en el fondo */
+    text-decoration: none;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+header nav a {
+    text-decoration: none;
+    /* --- CAMBIO DE COLOR --- */
+    color: var(--white-color); /* Cambiado para que sea visible */
+    font-weight: 600;
+}
+
+/* --- NUEVA REGLA para el botón activo como en el diseño de referencia --- */
+header nav a.active {
+    background-color: var(--marron-color); /* Fondo oscuro para el elemento activo */
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+/* --- MODIFICACIÓN para el hover para que no choque con el botón activo --- */
+header nav a:not(.active):hover {
+    color: #ccc; /* Un gris claro para el hover */
+}
+
+/* ===== SECCIÓN HERO ===== */
+.hero {
+    /* ANTERIOR: background-color: #EFEBE4; */
+    
+    /* --- NUEVAS PROPIEDADES PARA EL FONDO --- */
+    background-image: url('../img/Designer.png'); /* Reemplaza con la ruta a tu imagen de fondo */
+    background-size: cover; /* Cubre todo el área sin distorsionar la imagen */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    
+    padding-top: 50px;
+    position: relative; /* Importante para los pseudo-elementos si agregamos un overlay */
+    z-index: 0; /* Asegura que el contenido quede por encima */
+}
+
+/* --- NUEVO: Para crear un ligero overlay oscuro sobre el fondo (opcional) --- */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.05); /* Un 5% de oscuridad, ajusta si es necesario */
+    z-index: 1; /* Por debajo del contenido, pero por encima del fondo */
+}
+
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Permite que el contenido del container esté sobre el ::before */
+    z-index: 2; /* Mayor que el ::before */
+}
+
+/* Contenedor principal del texto */
+.hero-text {
+    display: flex;
+    align-items: baseline; /* Alinea las dos columnas por su base */
+    gap: 1rem;
+}
+
+/* Columna 1: "IT' A BREAK WITH" */
+.hero-title-prefix {
+    font-family: 'Manrope', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 500;
+    line-height: 1.1;
+    text-align: right;
+    color: #4a4a4a;
+}
+
+/* Estilo para el primer "COFFEE" principal */
+.main-coffee {
+    transform: translateY(60px) !important;
+    font-family: 'Manrope', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900; /* Muy negrita */
+    line-height: 1.05;
+    color: #000;
+}
+
+/* El contenedor del texto apilado que queremos mover */
+.stacked-text {
+  margin-top: 3.5rem !important; /* reduce si quieres que quede más cerca */
+}
+
+/* Estilo para todos los "COFFEE" apilados */
+.stacked-text p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1.05;
+}
+
+/* Estilos para los "COFFEE" sólidos (lvl-2 y lvl-3) */
+.stacked-text .lvl-2,
+.stacked-text .lvl-3 {
+    font-weight: 900; /* Muy negrita */
+    color: #000;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 70%;
+    position: relative;
+    z-index: 2; /* Asegura que la imagen de café esté sobre todo */
+}
+
+.bg-text {
+    font-family: var(--font-display);
+    font-size: 10rem;
+    color: #000; /* ANTERIOR: rgba(0,0,0,0.08) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    z-index: 1;
+}
+
+/* ===== SECCIÓN PRODUCTO PRINCIPAL ===== */
+.main-product {
+    padding: 80px 0;
+}
+
+.product-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    margin-bottom: 50px;
+}
+
+.product-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding-bottom: 5px;
+}
+
+.product-nav a.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.product-display {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.product-image { flex: 1; text-align: center; }
+.product-image img { max-width: 110%; }
+
+.product-details { flex: 1; }
+.product-details h2 { font-size: 2.5rem; }
+.product-details .price { font-size: 2rem; color: var(--primary-color); font-weight: 700; margin: 10px 0; display: block; }
+.product-details p { line-height: 1.6; margin-bottom: 30px; }
+
+.product-actions { display: flex; align-items: center; gap: 20px; }
+.quantity-selector { display: flex; align-items: center; border: 1px solid #ddd; border-radius: 8px; }
+.quantity-selector button { background: none; border: none; font-size: 1.5rem; padding: 10px 15px; cursor: pointer; }
+.quantity-selector span { font-size: 1.2rem; font-weight: 700; padding: 0 10px; }
+
+/* ===== SECCIÓN CARACTERÍSTICAS ===== */
+
+.features {
+    padding: 100px 0; /* Un poco más de espacio vertical */
+    text-align: left; /* --- CAMBIO: Ya no centramos todo por defecto --- */
+}
+
+/* --- CORRECCIÓN: Usamos Flexbox para crear las dos columnas de texto --- */
+.features-header {
+    display: flex; /* <-- ¡LA MAGIA! Activa el modo de columnas */
+    justify-content: space-between; /* Empuja las columnas a los extremos */
+    align-items: center; /* Las alinea verticalmente */
+    gap: 2rem; /* Espacio entre las columnas */
+    max-width: 1000px; /* Un ancho máximo para que no se separen demasiado */
+    margin: 0 auto 60px auto; /* Centra el bloque y le da espacio inferior */
+}
+
+/* Columna 1: El título */
+.features-header h2 {
+    flex-basis: 40%; /* Asigna un 40% del ancho al título */
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+/* Columna 2: El párrafo */
+.features-header p {
+    flex-basis: 55%; /* Asigna un 55% del ancho al párrafo */
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color); /* Un gris oscuro para el párrafo */
+}
+
+/* La cuadrícula de 3 tarjetas no cambia */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* --- CORRECCIÓN: Estilos para cada tarjeta individual --- */
+.feature-card {
+    /* --- CAMBIO: Padding reducido, especialmente vertical --- */
+    padding: 5px 40px 30px; 
+    border-radius: 20px; /* Bordes un poco más redondeados */
+    background-color: var(--marron-color);
+    color: var(--texto-claro-color);
+
+    /* --- NUEVO: Centrar el contenido DENTRO de la tarjeta --- */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.feature-card.highlighted { 
+    background-color: var(--secondary-color); 
+    color: var(--marron-color);
+}
+
+.feature-card img { 
+    height: 150px; /* Damos una altura fija a los iconos para consistencia */
+    
+}
+
+.feature-card h3 { 
+    font-size: 1.3rem;
+    /* --- NUEVO: Hacemos el texto del título más grueso --- */
+    font-weight: 700; 
+}
+
+/* ===== SECCIÓN SABORES POPULARES ===== */
+.popular-flavours {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.popular-flavours h2 {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    font-weight: 800;
+}
+
+/* --- ¡ASEGÚRATE DE QUE ESTA REGLA ESTÉ CORRECTA! --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* (El resto de los estilos de la tarjeta que ya corregimos) */
+.product-card {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+/* 2. La parte superior (tendrá el fondo oscuro) */
+.card-top {
+    background-color: var(--dark-color); /* Fondo oscuro */
+    position: relative; /* Necesario para posicionar la etiqueta "Chocolate" */
+    text-align: center;
+    padding: 20px 20px 0 20px; /* Padding superior, sin padding inferior */
+}
+
+/* 3. La imagen del café (EL TRUCO MÁS IMPORTANTE) */
+.card-top img {
+    width: 80%;
+    position: relative;
+    z-index: 2; /* Se asegura que la imagen esté por encima de la sección inferior */
+    
+    /* --- ¡LA MAGIA! --- */
+    /* Este margen negativo empuja la imagen hacia abajo, sobre la sección inferior */
+    margin-bottom: -60px; 
+}
+
+/* 4. La etiqueta "Chocolate" */
+.product-card .tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* 5. La parte inferior (tendrá el fondo claro) */
+.card-bottom {
+    background-color: var(--secondary-color); /* Fondo claro/tan */
+    
+    /* --- ¡LA MAGIA! --- */
+    /* Este padding superior crea el espacio necesario para la imagen que se desborda */
+    padding: 80px 20px 20px 20px; 
+}
+
+/* 6. El título del producto */
+.product-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+/* 7. El footer (precio y botón) */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 8. El precio */
+.card-footer .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+/* 9. El botón "ADD TO CART" */
+.product-card .btn-primary {
+    background-color: var(--dark-color); /* Fondo oscuro sólido */
+    color: var(--white-color); /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-card .btn-primary:hover {
+    background-color: #000; /* Un negro más intenso al pasar el ratón */
+}
+
+.popular-flavours {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.popular-flavours h2 {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    font-weight: 800;
+}
+
+/* --- ¡ASEGÚRATE DE QUE ESTA REGLA ESTÉ CORRECTA! --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* (El resto de los estilos de la tarjeta que ya corregimos) */
+.product-card {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+/* ===== SECCIÓN NEWSLETTER ===== */
+.newsletter {
+    padding: 80px 0;
+}
+.newsletter .container {
+    display: flex;
+    align-items: center;
+    background-color: #F0F0F0;
+    color: var(--text-color);
+    border-radius: 20px;
+    padding: 0 60px;
+}
+
+.newsletter-content { flex: 1; }
+.newsletter-content h2 { font-size: 2.5rem; }
+.newsletter-content p { margin: 20px 0 30px 0; }
+.newsletter-content form { display: flex; }
+.newsletter-content input {
+    flex-grow: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+}
+.newsletter-content button { border-radius: 0 8px 8px 0; }
+
+.newsletter-image { flex: 1; text-align: right; }
+.newsletter-image img { max-width: 130%; }
+
+/* ===== PIE DE PÁGINA ===== */
+footer {
+    background-color: var(--marron-color);
+    color: var(--white-color);
+    padding: 60px 0 20px 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-col h3 { font-size: 1.8rem; margin-bottom: 15px; }
+.footer-col h4 { font-size: 1.2rem; margin-bottom: 15px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col a { text-decoration: none; color: #ccc; }
+.footer-col a:hover { color: var(--white-color); }
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: #ccc;
+}

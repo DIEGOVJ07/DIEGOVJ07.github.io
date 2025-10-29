@@ -1,0 +1,125 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f9;
+}
+
+.login {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;/* Oculta el desbordamiento */
+}
+
+.info-panel {
+    flex: 1;/* Ocupa la mitad del contenedor */
+    background-color: #277EFF;
+    color: white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-panel h2 {
+    font-size: 26px;
+
+}
+
+.division-izq {
+    width: 80px;
+    height: 3px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center
+}
+
+.info-panel p {
+    font-size: 13px;
+    max-width: 85%;
+}
+
+.know-more-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    /* Negrita */
+    cursor: pointer;
+    margin-top: 20px;
+    /* Cambia el cursor al pasar sobre el botón */
+    align-self: flex-start;
+    /* Se alinea a la izquierda */
+}
+
+.know-more-btn:hover {
+    background-color: white;
+    color: #0d6efd;
+}
+
+
+.form-panel {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-panel h3 {
+    margin-bottom: 5px;
+    font-size: 24px;
+    color: #333;
+    display: flex;
+    justify-content: center
+}
+
+.division-der {
+    width: 30px;
+    height: 4px;
+    background-color: #4577BD;
+    margin: 0 auto;/* Centra horizontalmente */
+    margin-bottom:30px;
+}
+
+.input {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.input input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 25px 0;
+    font-size: 16px;
+}
+
+.input input::placeholder {
+    color: #aaa;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background-color: #0d6efd;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+    max-width: 70%;
+    display: block; /* Asegura que el elemento se comporte como un bloque */
+    margin: 0 auto;
+    margin-top: 60px;
+}
